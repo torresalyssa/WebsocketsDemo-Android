@@ -51,4 +51,12 @@ public class SocketIOManager {
     public void exitChatWithNickname(String nickname) {
         mSocket.emit("exitUser", nickname);
     }
+
+    public void sendMessage(String message, String nickname) {
+        mSocket.emit("chatMessage", nickname, message);
+    }
+
+    public void getMessage(Emitter.Listener listener) {
+        mSocket.on("newChatMessage", listener);
+    }
 }
